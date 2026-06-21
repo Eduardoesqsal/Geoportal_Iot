@@ -209,3 +209,5 @@ Este proyecto demuestra conocimientos de:
 -   APIs
 -   Cloud
 -   DevOps
+
+* CI pipeline ready

@@ -25,10 +25,10 @@ export function BaseMapSwitcher({ current, onChange }: BaseMapSwitcherProps) {
             onClick={() => onChange(m.key)}
             title={m.label}
             className={`flex h-8.5 w-8.5 cursor-pointer items-center justify-center transition-all duration-200 ${
-              current === m.key
-                ? 'bg-accent/15 text-accent shadow-inner'
-                : 'bg-white/[0.035] text-graphite-400 hover:bg-white/[0.08] hover:text-white'
-            } ${i < maps.length - 1 ? 'border-b border-white/10' : ''}`}
+            current === m.key
+              ? 'bg-graphite-900 text-white'
+              : 'bg-white/[0.035] text-graphite-400 hover:bg-white/[0.08] hover:text-white'
+          } ${i < maps.length - 1 ? 'border-b border-white/10' : ''}`}
           >
             <Icon className="h-3.5 w-3.5" />
           </button>
