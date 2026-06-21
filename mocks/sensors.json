@@ -1,0 +1,220 @@
+{
+  "data": [
+    {
+      "id": "SEN-001",
+      "name": "Estación Meteorológica Norte",
+      "status": "online",
+      "location": { "lat": 20.39, "lng": -99.99 },
+      "metrics": { "temperature": 24.3, "humidity": 58, "pressure": 1013 },
+      "lastUpdated": "2026-06-21T10:30:00Z"
+    },
+    {
+      "id": "SEN-002",
+      "name": "Sensores Calidad Aire Centro",
+      "status": "warning",
+      "location": { "lat": 20.45, "lng": -99.85 },
+      "metrics": { "temperature": 28.1, "humidity": 45, "空气质量": "moderate" },
+      "lastUpdated": "2026-06-21T10:28:00Z"
+    },
+    {
+      "id": "SEN-003",
+      "name": "Estación Hidrométrica Río",
+      "status": "online",
+      "location": { "lat": 20.25, "lng": -100.05 },
+      "metrics": { "temperature": 19.7, "humidity": 72, "pressure": 1008, "windSpeed": 12 },
+      "lastUpdated": "2026-06-21T10:29:00Z"
+    },
+    {
+      "id": "SEN-004",
+      "name": "Sensor Industrial Parque",
+      "status": "offline",
+      "location": { "lat": 20.52, "lng": -99.78 },
+      "metrics": { "temperature": 0, "humidity": 0 },
+      "lastUpdated": "2026-06-20T22:00:00Z"
+    },
+    {
+      "id": "SEN-005",
+      "name": "Estación Solar Sur",
+      "status": "error",
+      "location": { "lat": 20.18, "lng": -99.95 },
+      "metrics": { "temperature": 35.2, "humidity": 20 },
+      "lastUpdated": "2026-06-21T09:15:00Z"
+    },
+    {
+      "id": "SEN-006",
+      "name": "Monitor Costero Este",
+      "status": "online",
+      "location": { "lat": 20.65, "lng": -99.6 },
+      "metrics": { "temperature": 22.8, "humidity": 65, "pressure": 1015, "windSpeed": 8 },
+      "lastUpdated": "2026-06-21T10:30:00Z"
+    },
+    {
+      "id": "CDMX-001",
+      "name": "Monitor Ambiental CDMX Centro",
+      "status": "online",
+      "location": { "lat": 19.4326, "lng": -99.1332 },
+      "metrics": { "temperature": 26.5, "humidity": 48, "pressure": 1012, "windSpeed": 10 },
+      "lastUpdated": "2026-06-21T11:00:00Z"
+    },
+    {
+      "id": "CDMX-002",
+      "name": "Estación Polanco CDMX",
+      "status": "online",
+      "location": { "lat": 19.4333, "lng": -99.1900 },
+      "metrics": { "temperature": 25.8, "humidity": 52, "pressure": 1011 },
+      "lastUpdated": "2026-06-21T10:55:00Z"
+    },
+    {
+      "id": "CDMX-003",
+      "name": "Sensor Calidad Aire Iztapalapa",
+      "status": "warning",
+      "location": { "lat": 19.3580, "lng": -99.0930 },
+      "metrics": { "temperature": 28.9, "humidity": 40, "空气质量": "poor" },
+      "lastUpdated": "2026-06-21T10:45:00Z"
+    },
+    {
+      "id": "CDMX-004",
+      "name": "Estación Coyoacán CDMX",
+      "status": "online",
+      "location": { "lat": 19.3500, "lng": -99.1600 },
+      "metrics": { "temperature": 24.1, "humidity": 55, "pressure": 1013, "windSpeed": 6 },
+      "lastUpdated": "2026-06-21T11:05:00Z"
+    },
+    {
+      "id": "QRO-001",
+      "name": "Estación Querétaro Centro",
+      "status": "online",
+      "location": { "lat": 20.5881, "lng": -100.3881 },
+      "metrics": { "temperature": 27.3, "humidity": 42, "pressure": 1010 },
+      "lastUpdated": "2026-06-21T10:50:00Z"
+    },
+    {
+      "id": "QRO-002",
+      "name": "Monitor Industrial Querétaro",
+      "status": "online",
+      "location": { "lat": 20.6200, "lng": -100.4500 },
+      "metrics": { "temperature": 29.1, "humidity": 38, "pressure": 1009, "windSpeed": 14 },
+      "lastUpdated": "2026-06-21T10:40:00Z"
+    },
+    {
+      "id": "QRO-003",
+      "name": "Sensor Ambiental Juriquilla",
+      "status": "warning",
+      "location": { "lat": 20.7000, "lng": -100.4500 },
+      "metrics": { "temperature": 30.2, "humidity": 35 },
+      "lastUpdated": "2026-06-21T09:30:00Z"
+    },
+    {
+      "id": "GTO-001",
+      "name": "Estación Guanajuato Capital",
+      "status": "online",
+      "location": { "lat": 21.0190, "lng": -101.2570 },
+      "metrics": { "temperature": 23.4, "humidity": 55, "pressure": 1014 },
+      "lastUpdated": "2026-06-21T10:35:00Z"
+    },
+    {
+      "id": "GTO-002",
+      "name": "Monitor León Bajío",
+      "status": "online",
+      "location": { "lat": 21.1167, "lng": -101.6833 },
+      "metrics": { "temperature": 28.7, "humidity": 40, "pressure": 1011, "windSpeed": 11 },
+      "lastUpdated": "2026-06-21T10:50:00Z"
+    },
+    {
+      "id": "GTO-003",
+      "name": "Sensor Celaya Industrial",
+      "status": "offline",
+      "location": { "lat": 20.5167, "lng": -100.8167 },
+      "metrics": { "temperature": 0, "humidity": 0 },
+      "lastUpdated": "2026-06-20T18:00:00Z"
+    },
+    {
+      "id": "GTO-004",
+      "name": "Estación Irapuato Agrícola",
+      "status": "online",
+      "location": { "lat": 20.6833, "lng": -101.3500 },
+      "metrics": { "temperature": 26.1, "humidity": 48, "pressure": 1012 },
+      "lastUpdated": "2026-06-21T10:25:00Z"
+    },
+    {
+      "id": "EDOMEX-001",
+      "name": "Monitor Toluca Centro",
+      "status": "online",
+      "location": { "lat": 19.2925, "lng": -99.6569 },
+      "metrics": { "temperature": 18.9, "humidity": 62, "pressure": 1015, "windSpeed": 7 },
+      "lastUpdated": "2026-06-21T11:00:00Z"
+    },
+    {
+      "id": "EDOMEX-002",
+      "name": "Estación Ecatepec Industrial",
+      "status": "error",
+      "location": { "lat": 19.6000, "lng": -99.0500 },
+      "metrics": { "temperature": 31.4, "humidity": 33, "空气质量": "hazardous" },
+      "lastUpdated": "2026-06-21T08:15:00Z"
+    },
+    {
+      "id": "EDOMEX-003",
+      "name": "Sensor Naucalpan Ambiental",
+      "status": "online",
+      "location": { "lat": 19.4667, "lng": -99.2333 },
+      "metrics": { "temperature": 25.3, "humidity": 50, "pressure": 1012 },
+      "lastUpdated": "2026-06-21T10:30:00Z"
+    },
+    {
+      "id": "PUE-001",
+      "name": "Estación Puebla Angelópolis",
+      "status": "online",
+      "location": { "lat": 19.0414, "lng": -98.2063 },
+      "metrics": { "temperature": 23.8, "humidity": 52, "pressure": 1013 },
+      "lastUpdated": "2026-06-21T10:45:00Z"
+    },
+    {
+      "id": "PUE-002",
+      "name": "Monitor Cholula Puebla",
+      "status": "online",
+      "location": { "lat": 19.0640, "lng": -98.3040 },
+      "metrics": { "temperature": 22.5, "humidity": 56, "pressure": 1014, "windSpeed": 5 },
+      "lastUpdated": "2026-06-21T11:00:00Z"
+    },
+    {
+      "id": "PUE-003",
+      "name": "Sensor Industrial Tehuacán",
+      "status": "warning",
+      "location": { "lat": 18.4617, "lng": -97.3928 },
+      "metrics": { "temperature": 29.6, "humidity": 38, "pressure": 1010 },
+      "lastUpdated": "2026-06-21T09:55:00Z"
+    },
+    {
+      "id": "MICH-001",
+      "name": "Estación Morelia Centro",
+      "status": "online",
+      "location": { "lat": 19.7027, "lng": -101.1845 },
+      "metrics": { "temperature": 24.6, "humidity": 48, "pressure": 1012 },
+      "lastUpdated": "2026-06-21T10:30:00Z"
+    },
+    {
+      "id": "MICH-002",
+      "name": "Monitor Uruapan Michoacán",
+      "status": "online",
+      "location": { "lat": 19.4167, "lng": -102.0667 },
+      "metrics": { "temperature": 26.9, "humidity": 44, "pressure": 1011, "windSpeed": 9 },
+      "lastUpdated": "2026-06-21T10:20:00Z"
+    },
+    {
+      "id": "MICH-003",
+      "name": "Sensor Costero Lázaro Cárdenas",
+      "status": "offline",
+      "location": { "lat": 17.9700, "lng": -102.2200 },
+      "metrics": { "temperature": 0, "humidity": 0 },
+      "lastUpdated": "2026-06-20T14:00:00Z"
+    },
+    {
+      "id": "MICH-004",
+      "name": "Estación Zamora Agrícola",
+      "status": "online",
+      "location": { "lat": 19.9833, "lng": -102.2833 },
+      "metrics": { "temperature": 27.4, "humidity": 42, "pressure": 1011 },
+      "lastUpdated": "2026-06-21T10:10:00Z"
+    }
+  ]
+}
