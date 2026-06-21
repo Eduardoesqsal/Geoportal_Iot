@@ -56,15 +56,15 @@ export function FileDropZone({ onLoad }: FileDropZoneProps) {
 
   if (fileName) {
     return (
-      <div className="flex items-center gap-2 bg-graphite-850 rounded-lg border border-graphite-700/60 px-3 py-2">
-        <IconPolygon className="w-4 h-4 text-accent shrink-0" />
+      <div className="flex items-center gap-2 bg-graphite-50 rounded-lg border border-graphite-200 px-3 py-2">
+        <IconPolygon className="w-4 h-4 text-graphite-700 shrink-0" />
         <div className="flex-1 min-w-0">
-          <p className="text-xs text-white truncate">{fileName}</p>
+          <p className="text-xs text-graphite-800 font-medium truncate">{fileName}</p>
           <p className="text-[10px] text-graphite-500">Loaded successfully</p>
         </div>
         <button
           onClick={() => { setFileName(null); onLoad(null as unknown as Record<string, unknown>) }}
-          className="text-[10px] text-graphite-500 hover:text-danger transition-colors cursor-pointer font-medium"
+          className="text-[10px] text-graphite-400 hover:text-danger transition-colors cursor-pointer font-medium"
         >
           Clear
         </button>
@@ -80,8 +80,8 @@ export function FileDropZone({ onLoad }: FileDropZoneProps) {
       onClick={handleClick}
       className={`relative rounded-lg border-2 border-dashed p-3.5 text-center cursor-pointer transition-all duration-200 ${
         dragging
-          ? 'border-accent bg-accent/8'
-          : 'border-graphite-700/50 bg-graphite-850/50 hover:border-graphite-600 hover:bg-graphite-850'
+          ? 'border-graphite-900 bg-graphite-100'
+          : 'border-graphite-300 bg-graphite-50/50 hover:border-graphite-400 hover:bg-graphite-100'
       }`}
     >
       <input
@@ -97,15 +97,15 @@ export function FileDropZone({ onLoad }: FileDropZoneProps) {
       />
       <div className="flex flex-col items-center gap-1.5">
         {loading ? (
-          <div className="w-6 h-6 border-2 border-accent border-t-transparent rounded-full animate-spin" />
+          <div className="w-6 h-6 border-2 border-graphite-700 border-t-transparent rounded-full animate-spin" />
         ) : (
-          <IconUpload className="w-5 h-5 text-graphite-400" />
+          <IconUpload className="w-5 h-5 text-graphite-500" />
         )}
-        <p className="text-[11px] text-graphite-300 font-medium">
+        <p className="text-[11px] text-graphite-700 font-semibold tracking-wide">
           {loading ? 'Loading...' : 'Drop GeoJSON here'}
         </p>
         <p className="text-[9px] text-graphite-500">or click to browse</p>
-        <p className="text-[8px] text-graphite-600 mt-0.5">.geojson .json .zip (shapefile)</p>
+        <p className="text-[8px] text-graphite-400 mt-0.5">.geojson .json .zip (shapefile)</p>
       </div>
     </div>
   )

@@ -21,16 +21,16 @@ export function MapControls({ baseMap, onChangeBaseMap, onGeoJsonLoad }: MapCont
         <button
           onClick={() => setPolyOpen(!polyOpen)}
           title="Import Polygon"
-          className={`w-9 h-9 flex items-center justify-center rounded-lg border transition-all duration-200 cursor-pointer ${
+          className={`w-9 h-9 flex items-center justify-center rounded-xl border-2 transition-all duration-200 cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.25)] ${
             polyOpen
-              ? 'bg-accent text-graphite-950 border-accent shadow-[0_0_12px_rgba(163,230,53,0.25)]'
-              : 'bg-graphite-850/90 backdrop-blur-sm text-graphite-400 border-graphite-700/60 hover:bg-graphite-700/60 hover:text-graphite-200 shadow-[0_4px_16px_rgba(0,0,0,0.3)]'
+              ? 'bg-graphite-900 text-white border-graphite-900'
+              : 'bg-white text-graphite-800 border-white hover:bg-graphite-100 hover:border-graphite-200'
           }`}
         >
           <IconPolygon className="w-4 h-4" />
         </button>
         {polyOpen && (
-          <div className="absolute left-11 top-0 w-60 glass-panel rounded-xl p-3 shadow-2xl animate-[scale-in_0.15s_ease-out]">
+          <div className="absolute left-11 top-0 w-64 bg-white rounded-xl p-3 shadow-2xl border border-graphite-200 animate-[scale-in_0.15s_ease-out]">
             <FileDropZone onLoad={(g) => { onGeoJsonLoad(g); setPolyOpen(false) }} />
           </div>
         )}

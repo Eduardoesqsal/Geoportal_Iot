@@ -27,6 +27,6 @@ describe('BaseMapSwitcher', () => {
   it('highlights the active map type', () => {
     const { container } = render(<BaseMapSwitcher {...defaultProps} current="street" />)
     const buttons = container.querySelectorAll('button')
-    expect(buttons[1].className).toContain('accent')
+    expect(buttons[1].className).toContain('graphite-900')
   })
 })

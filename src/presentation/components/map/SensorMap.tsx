@@ -43,29 +43,35 @@ const labelLayers: Record<BaseMapType, { url: string; attribution: string } | nu
 }
 
 function createMarkerIcon(color: string, selected: boolean) {
-  const size = selected ? 18 : 12
-  const borderWidth = selected ? 3 : 2
+  const outerSize = selected ? 24 : 18
+  const innerSize = selected ? 12 : 8
   const glowColor = selected ? '#a3e635' : color
   return new L.DivIcon({
     className: 'custom-marker',
     html: `<div style="
-      width:${size}px;height:${size}px;
+      width:${outerSize}px;height:${outerSize}px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.95);
+      border:2px solid ${selected ? '#a3e635' : 'rgba(255,255,255,0.8)'};
+      box-shadow:0 2px 8px rgba(0,0,0,0.35), 0 0 ${selected ? 16 : 0}px ${glowColor};
+      display:flex;align-items:center;justify-content:center;
+      transition:all 0.2s ease;
+    "><div style="
+      width:${innerSize}px;height:${innerSize}px;
       border-radius:50%;
       background:${color};
-      border:${borderWidth}px solid ${selected ? '#a3e635' : 'rgba(255,255,255,0.9)'};
-      box-shadow:0 0 ${selected ? 12 : 6}px rgba(0,0,0,0.5), 0 0 ${selected ? 16 : 0}px ${glowColor};
-      transition:all 0.2s ease;
-    "></div>`,
-    iconSize: [size, size],
-    iconAnchor: [size / 2, size / 2],
+      box-shadow:inset 0 1px 2px rgba(0,0,0,0.2);
+    "></div></div>`,
+    iconSize: [outerSize, outerSize],
+    iconAnchor: [outerSize / 2, outerSize / 2],
   })
 }
 
 const iconSelected = new L.DivIcon({
   className: 'custom-marker',
-  html: '<div style="width:18px;height:18px;border-radius:50%;background:#22c55e;border:3px solid #a3e635;box-shadow:0 0 16px rgba(163,230,53,0.4),0 0 8px rgba(0,0,0,0.5);"></div>',
-  iconSize: [18, 18],
-  iconAnchor: [9, 9],
+  html: '<div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.95);border:2px solid #a3e635;box-shadow:0 2px 8px rgba(0,0,0,0.35),0 0 16px rgba(163,230,53,0.4);display:flex;align-items:center;justify-content:center;"><div style="width:12px;height:12px;border-radius:50%;background:#22c55e;box-shadow:inset 0 1px 2px rgba(0,0,0,0.2);"></div></div>',
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
 })
 
 function getIcon(sensor: Sensor, isSelected: boolean) {
@@ -144,12 +150,15 @@ export function SensorMap({
           }}
         >
           <Popup>
-            <div className="text-xs">
-              <strong className="text-white">{sensor.name}</strong>
-              <br />
-              <span className="text-graphite-500 text-[10px]">{sensor.id}</span>
-              <br />
-              <span className="text-graphite-400">{sensor.metrics.temperature?.toFixed(1)}°C | {sensor.metrics.humidity?.toFixed(0)}%</span>
+            <div className="text-xs" style={{ minWidth: 120 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: sensor.status === 'online' ? '#22c55e' : sensor.status === 'warning' ? '#f59e0b' : sensor.status === 'error' ? '#ef4444' : '#5e5e5e' }} />
+                <strong className="text-white" style={{ fontSize: 12 }}>{sensor.name}</strong>
+              </div>
+              <div style={{ color: '#5e5e5e', fontSize: 10, fontFamily: 'monospace', marginBottom: 4 }}>{sensor.id}</div>
+              <div style={{ color: '#a8a8a8', fontSize: 11 }}>
+                {sensor.metrics.temperature?.toFixed(1)}°C · {sensor.metrics.humidity?.toFixed(0)}%
+              </div>
             </div>
           </Popup>
         </Marker>
@@ -171,10 +180,13 @@ export function SensorMap({
               }}
             >
               <Popup>
-                <div className="text-xs">
-                  <strong className="text-white">{eq.properties.title}</strong>
-                  <br />
-                  <span className="text-graphite-500 text-[10px]">{new Date(eq.properties.time).toLocaleString()}</span>
+                <div className="text-xs" style={{ minWidth: 140 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: getMagColor(mag) }} />
+                    <strong className="text-white" style={{ fontSize: 11 }}>M {mag.toFixed(1)} Earthquake</strong>
+                  </div>
+                  <div style={{ color: '#a8a8a8', fontSize: 10, marginBottom: 2 }}>{eq.properties.title}</div>
+                  <div style={{ color: '#5e5e5e', fontSize: 9 }}>{new Date(eq.properties.time).toLocaleString()}</div>
                 </div>
               </Popup>
             </CircleMarker>
