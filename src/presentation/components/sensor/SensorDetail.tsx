@@ -147,12 +147,12 @@ export function SensorDetail({ sensor, isLoading, weather, airQuality }: SensorD
         </div>
       )}
 
-      {sensor.lastUpdated && (
+      {sensor.lastUpdated ? (
         <p className="text-[9px] text-graphite-600 text-center pt-1 font-medium">
           Updated {new Date(sensor.lastUpdated).toLocaleString()}
         </p>
-      )}
+      ) : null}
     </div>
-    </div>
+
   )
 }

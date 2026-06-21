@@ -36,7 +36,7 @@ export function LeftPanel({ children, mobileOpen = false, onClose }: LeftPanelPr
           {collapsed ? <IconChevronRight className="h-2.5 w-2.5" /> : <IconChevronLeft className="h-2.5 w-2.5" />}
         </button>
       </div>
-      {!collapsed && <div className="flex flex-1 flex-col gap-2 overflow-hidden p-2">{children}</div>}
+        {!collapsed && <div className="flex flex-1 flex-col gap-2 overflow-hidden p-2"><p className="text-xs font-medium mb-2">Explorer</p>{children}</div>}
     </>
   )
 
@@ -74,7 +74,12 @@ export function LeftPanel({ children, mobileOpen = false, onClose }: LeftPanelPr
                 </svg>
               </button>
             </div>
-            <div className="flex flex-1 flex-col gap-2 overflow-hidden p-2">{children}</div>
+          {!collapsed && (
+        <div className="flex flex-1 flex-col gap-2 overflow-hidden p-2">
+          <h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-300">Explorer</h2>
+          {children}
+        </div>
+      )}
           </aside>
         </div>
       )}
