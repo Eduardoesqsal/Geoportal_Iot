@@ -41,106 +41,106 @@ export function SensorDetail({ sensor, isLoading, weather, airQuality }: SensorD
   const status = statusConfig[sensor.status]
 
   return (
-    <div className="space-y-3">
-      <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-3.5 border border-graphite-700/40 shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/15 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(163,230,53,0.06)]">
-            <IconSensor className="w-4 h-4 text-accent" />
+    <div className="space-y-2.5">
+      <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-2.5 border border-graphite-700/40 shadow-sm">
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 rounded-xl bg-accent/10 border border-accent/15 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(163,230,53,0.06)]">
+            <IconSensor className="w-3 h-3 text-accent" />
           </div>
           <div className="min-w-0 flex-1">
-            <h3 className="text-sm font-bold text-white/90 truncate">{sensor.name}</h3>
-            <p className="text-[10px] text-graphite-500 font-mono mt-0.5">{sensor.id}</p>
+            <h3 className="text-xs font-bold text-white/90 truncate">{sensor.name}</h3>
+            <p className="text-[9px] text-graphite-500 font-mono mt-0.5">{sensor.id}</p>
           </div>
-          <div className={`flex items-center gap-1.5 px-2 py-1 rounded-lg ${status.bg}`}>
-            <span className={`w-2 h-2 rounded-full ${status.dot}`} />
-            <span className={`text-[10px] font-bold ${status.color}`}>{status.label}</span>
+          <div className={`flex items-center gap-1.5 px-1.5 py-0.5 rounded-lg ${status.bg}`}>
+            <span className={`w-1.5 h-1.5 rounded-full ${status.dot}`} />
+            <span className={`text-[9px] font-bold ${status.color}`}>{status.label}</span>
           </div>
         </div>
       </div>
 
-      <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-3.5 border border-graphite-700/40 shadow-sm">
-        <div className="flex items-center gap-1.5 mb-2.5">
-          <IconMap className="w-3 h-3 text-graphite-400" />
-          <p className="text-[9px] text-graphite-500 uppercase tracking-wider font-bold">Location</p>
+      <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-2.5 border border-graphite-700/40 shadow-sm">
+        <div className="flex items-center gap-1 mb-2">
+          <IconMap className="w-2.5 h-2.5 text-graphite-400" />
+          <p className="text-[8px] text-graphite-500 uppercase tracking-wider font-bold">Location</p>
         </div>
-        <div className="flex items-center gap-2 text-xs">
-          <div className="bg-graphite-800/80 rounded-lg px-3 py-2 font-mono text-graphite-300 flex-1 border border-graphite-700/30">
+        <div className="flex items-center gap-1.5 text-[11px]">
+          <div className="bg-graphite-800/80 rounded-lg px-2 py-1.5 font-mono text-graphite-300 flex-1 border border-graphite-700/30">
             {formatFixed(sensor.location.lat, 4)}&deg; N
           </div>
-          <div className="bg-graphite-800/80 rounded-lg px-3 py-2 font-mono text-graphite-300 flex-1 border border-graphite-700/30">
+          <div className="bg-graphite-800/80 rounded-lg px-2 py-1.5 font-mono text-graphite-300 flex-1 border border-graphite-700/30">
             {formatFixed(sensor.location.lng, 4)}&deg; E
           </div>
         </div>
       </div>
 
-      <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-3.5 border border-graphite-700/40 shadow-sm">
-        <p className="text-[9px] text-graphite-500 uppercase tracking-wider mb-2.5 font-bold">Metrics</p>
-        <div className="grid grid-cols-2 gap-2">
-          <div className="bg-graphite-800/60 rounded-lg p-3 border border-graphite-700/30">
-            <p className="text-[9px] text-graphite-500 font-medium">Temperature</p>
-            <p className="text-lg font-bold text-white mt-0.5">{formatFixed(sensor.metrics.temperature, 1)}&deg;C</p>
+      <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-2.5 border border-graphite-700/40 shadow-sm">
+        <p className="text-[8px] text-graphite-500 uppercase tracking-wider mb-2 font-bold">Metrics</p>
+        <div className="grid grid-cols-2 gap-1.5">
+          <div className="bg-graphite-800/60 rounded-lg p-2 border border-graphite-700/30">
+            <p className="text-[8px] text-graphite-500 font-medium">Temperature</p>
+            <p className="text-sm font-bold text-white mt-0.5">{formatFixed(sensor.metrics.temperature, 1)}&deg;C</p>
           </div>
-          <div className="bg-graphite-800/60 rounded-lg p-3 border border-graphite-700/30">
-            <p className="text-[9px] text-graphite-500 font-medium">Humidity</p>
-            <p className="text-lg font-bold text-white mt-0.5">{formatFixed(sensor.metrics.humidity, 0)}%</p>
+          <div className="bg-graphite-800/60 rounded-lg p-2 border border-graphite-700/30">
+            <p className="text-[8px] text-graphite-500 font-medium">Humidity</p>
+            <p className="text-sm font-bold text-white mt-0.5">{formatFixed(sensor.metrics.humidity, 0)}%</p>
           </div>
         </div>
       </div>
 
       {sensor.metrics.pressure !== undefined && (
-        <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-3.5 border border-graphite-700/40 shadow-sm">
-          <p className="text-[9px] text-graphite-500 uppercase tracking-wider mb-1 font-bold">Pressure</p>
-          <p className="text-lg font-bold text-white">{sensor.metrics.pressure} hPa</p>
+        <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-2.5 border border-graphite-700/40 shadow-sm">
+          <p className="text-[8px] text-graphite-500 uppercase tracking-wider mb-0.5 font-bold">Pressure</p>
+          <p className="text-sm font-bold text-white">{sensor.metrics.pressure} hPa</p>
         </div>
       )}
 
       {weather && (
-        <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-3.5 border border-graphite-700/40 shadow-sm">
-          <div className="flex items-center gap-1.5 mb-2.5">
-            <div className="w-5 h-5 rounded-md bg-info/10 flex items-center justify-center">
-              <IconWind className="w-3 h-3 text-info" />
+        <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-2.5 border border-graphite-700/40 shadow-sm">
+          <div className="flex items-center gap-1 mb-2">
+            <div className="w-4.5 h-4.5 rounded bg-info/10 flex items-center justify-center">
+              <IconWind className="w-2.5 h-2.5 text-info" />
             </div>
-            <p className="text-[9px] text-graphite-500 uppercase tracking-wider font-bold">Weather</p>
+            <p className="text-[8px] text-graphite-500 uppercase tracking-wider font-bold">Weather</p>
           </div>
-          <div className="grid grid-cols-2 gap-2">
-            <div className="bg-graphite-800/60 rounded-lg p-2.5 border border-graphite-700/30">
-              <p className="text-[9px] text-graphite-500">Temp</p>
-              <p className="text-sm font-bold text-white mt-0.5">{formatFixed(weather.temperature_2m, 1)}&deg;C</p>
+          <div className="grid grid-cols-2 gap-1.5">
+            <div className="bg-graphite-800/60 rounded-lg p-2 border border-graphite-700/30">
+              <p className="text-[8px] text-graphite-500">Temp</p>
+              <p className="text-xs font-bold text-white mt-0.5">{formatFixed(weather.temperature_2m, 1)}&deg;C</p>
             </div>
-            <div className="bg-graphite-800/60 rounded-lg p-2.5 border border-graphite-700/30">
-              <p className="text-[9px] text-graphite-500">Humidity</p>
-              <p className="text-sm font-bold text-white mt-0.5">{formatFixed(weather.relative_humidity_2m, 0)}%</p>
+            <div className="bg-graphite-800/60 rounded-lg p-2 border border-graphite-700/30">
+              <p className="text-[8px] text-graphite-500">Humidity</p>
+              <p className="text-xs font-bold text-white mt-0.5">{formatFixed(weather.relative_humidity_2m, 0)}%</p>
             </div>
-            <div className="bg-graphite-800/60 rounded-lg p-2.5 border border-graphite-700/30">
-              <p className="text-[9px] text-graphite-500">Wind</p>
-              <p className="text-sm font-bold text-white mt-0.5">{formatFixed(weather.wind_speed_10m, 1)} km/h</p>
+            <div className="bg-graphite-800/60 rounded-lg p-2 border border-graphite-700/30">
+              <p className="text-[8px] text-graphite-500">Wind</p>
+              <p className="text-xs font-bold text-white mt-0.5">{formatFixed(weather.wind_speed_10m, 1)} km/h</p>
             </div>
-            <div className="bg-graphite-800/60 rounded-lg p-2.5 border border-graphite-700/30">
-              <p className="text-[9px] text-graphite-500">Pressure</p>
-              <p className="text-sm font-bold text-white mt-0.5">{formatFixed(weather.surface_pressure, 0)} hPa</p>
+            <div className="bg-graphite-800/60 rounded-lg p-2 border border-graphite-700/30">
+              <p className="text-[8px] text-graphite-500">Pressure</p>
+              <p className="text-xs font-bold text-white mt-0.5">{formatFixed(weather.surface_pressure, 0)} hPa</p>
             </div>
           </div>
         </div>
       )}
 
       {airQuality && airQuality.length > 0 && (
-        <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-3.5 border border-graphite-700/40 shadow-sm">
-          <div className="flex items-center gap-1.5 mb-2.5">
-            <div className="w-5 h-5 rounded-md bg-warning/10 flex items-center justify-center">
-              <IconDroplet className="w-3 h-3 text-warning" />
+        <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-2.5 border border-graphite-700/40 shadow-sm">
+          <div className="flex items-center gap-1 mb-2">
+            <div className="w-4.5 h-4.5 rounded bg-warning/10 flex items-center justify-center">
+              <IconDroplet className="w-2.5 h-2.5 text-warning" />
             </div>
-            <p className="text-[9px] text-graphite-500 uppercase tracking-wider font-bold">Air Quality</p>
+            <p className="text-[8px] text-graphite-500 uppercase tracking-wider font-bold">Air Quality</p>
           </div>
-          <div className="space-y-1.5">
+          <div className="space-y-1">
             {airQuality.map((m, i) => (
-              <div key={i} className="bg-graphite-800/60 rounded-lg p-2.5 border border-graphite-700/30">
+              <div key={i} className="bg-graphite-800/60 rounded-lg p-2 border border-graphite-700/30">
                 <div className="flex justify-between items-center">
-                  <p className="text-xs font-semibold text-graphite-300">{paramLabel(m.parameter)}</p>
-                  <p className="text-xs font-bold text-white">
+                  <p className="text-[10px] font-semibold text-graphite-300">{paramLabel(m.parameter)}</p>
+                  <p className="text-[10px] font-bold text-white">
                     {m.value} <span className="text-graphite-500 font-normal">{m.unit}</span>
                   </p>
                 </div>
-                <p className="text-[9px] text-graphite-600 mt-0.5">{m.location}</p>
+                <p className="text-[8px] text-graphite-600 mt-0.5">{m.location}</p>
               </div>
             ))}
           </div>
@@ -148,10 +148,11 @@ export function SensorDetail({ sensor, isLoading, weather, airQuality }: SensorD
       )}
 
       {sensor.lastUpdated && (
-        <p className="text-[10px] text-graphite-600 text-center pt-1 font-medium">
+        <p className="text-[9px] text-graphite-600 text-center pt-1 font-medium">
           Updated {new Date(sensor.lastUpdated).toLocaleString()}
         </p>
       )}
+    </div>
     </div>
   )
 }

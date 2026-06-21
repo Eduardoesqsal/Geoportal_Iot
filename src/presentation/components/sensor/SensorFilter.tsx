@@ -23,26 +23,26 @@ export function SensorFilter({
   onStatusChange,
 }: SensorFilterProps) {
   return (
-    <div className="space-y-2.5">
+    <div className="space-y-2 rounded-lg border border-white/10 bg-white/[0.035] p-2">
       <div className="relative">
-        <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-graphite-500 pointer-events-none" />
+        <IconSearch className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3 h-3 text-graphite-500 pointer-events-none" />
         <input
           type="text"
           placeholder="Search sensors..."
           value={search}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full pl-9 pr-3 py-2 bg-graphite-800/80 border border-graphite-700/50 rounded-xl text-xs text-white/80 placeholder-graphite-500 focus:outline-none focus:border-accent/40 focus:shadow-[0_0_0_3px_rgba(163,230,53,0.06)] transition-all"
+          className="w-full rounded-md border border-white/10 bg-black/25 py-1 pl-7 pr-2 text-[10px] text-white/85 placeholder-graphite-500 transition-all focus:border-accent/40 focus:outline-none focus:shadow-[0_0_0_3px_rgba(163,230,53,0.08)]"
         />
       </div>
-      <div className="flex flex-wrap gap-1">
+      <div className="grid grid-cols-2 gap-1">
         {statuses.map((s) => (
           <button
             key={s.value}
             onClick={() => onStatusChange(s.value)}
-            className={`px-3 py-1.5 text-[10px] rounded-lg transition-all cursor-pointer font-bold tracking-wider ${
+            className={`cursor-pointer rounded px-2 py-1 text-[8.5px] font-bold tracking-wide transition-all ${
               statusFilter === s.value
                 ? 'bg-accent/15 text-accent ring-1 ring-accent/30 shadow-[0_0_8px_rgba(163,230,53,0.04)]'
-                : 'text-graphite-500 hover:text-graphite-300 hover:bg-graphite-750'
+                : 'bg-black/20 text-graphite-500 ring-1 ring-white/5 hover:bg-white/[0.05] hover:text-graphite-300'
             }`}
           >
             {s.label}

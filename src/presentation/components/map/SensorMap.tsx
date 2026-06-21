@@ -46,7 +46,7 @@ const labelLayers: Record<BaseMapType, { url: string; attribution: string } | nu
 function createMarkerIcon(color: string, selected: boolean) {
   const outerSize = selected ? 24 : 18
   const innerSize = selected ? 12 : 8
-  const glowColor = selected ? '#a3e635' : color
+  const glowColor = selected ? '#f97316' : color
 
   return new L.DivIcon({
     className: 'custom-marker',
@@ -54,7 +54,7 @@ function createMarkerIcon(color: string, selected: boolean) {
       width:${outerSize}px;height:${outerSize}px;
       border-radius:50%;
       background:rgba(255,255,255,0.95);
-      border:2px solid ${selected ? '#a3e635' : 'rgba(255,255,255,0.8)'};
+      border:2px solid ${selected ? '#f97316' : 'rgba(255,255,255,0.8)'};
       box-shadow:0 2px 8px rgba(0,0,0,0.35), 0 0 ${selected ? 16 : 0}px ${glowColor};
       display:flex;align-items:center;justify-content:center;
       transition:all 0.2s ease;
@@ -71,7 +71,7 @@ function createMarkerIcon(color: string, selected: boolean) {
 
 const iconSelected = new L.DivIcon({
   className: 'custom-marker',
-  html: '<div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.95);border:2px solid #a3e635;box-shadow:0 2px 8px rgba(0,0,0,0.35),0 0 16px rgba(163,230,53,0.4);display:flex;align-items:center;justify-content:center;"><div style="width:12px;height:12px;border-radius:50%;background:#22c55e;box-shadow:inset 0 1px 2px rgba(0,0,0,0.2);"></div></div>',
+  html: '<div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.95);border:2px solid #f97316;box-shadow:0 2px 8px rgba(0,0,0,0.35),0 0 16px rgba(249,115,22,0.4);display:flex;align-items:center;justify-content:center;"><div style="width:12px;height:12px;border-radius:50%;background:#f97316;box-shadow:inset 0 1px 2px rgba(0,0,0,0.2);"></div></div>',
   iconSize: [24, 24],
   iconAnchor: [12, 12],
 })
@@ -234,7 +234,7 @@ export function SensorMap({
           key={JSON.stringify(geoJsonData)}
           data={geoJsonData as unknown as GeoJsonObject}
           style={() => ({
-            color: '#a3e635',
+            color: '#f97316',
             weight: 2,
             opacity: 0.6,
             fillOpacity: 0.08,

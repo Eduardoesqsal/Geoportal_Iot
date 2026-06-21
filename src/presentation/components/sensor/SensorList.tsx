@@ -26,7 +26,7 @@ export function SensorList({ sensors, selectedId, onSelect, isLoading }: SensorL
   }
 
   return (
-    <div className="space-y-1 overflow-y-auto flex-1 pr-1 -mr-1">
+    <div className="-mr-1 flex-1 space-y-1.5 overflow-y-auto pr-1">
       {sensors.map((sensor) => {
         const st = statusConfig[sensor.status]
 
@@ -34,50 +34,50 @@ export function SensorList({ sensors, selectedId, onSelect, isLoading }: SensorL
           <button
             key={sensor.id}
             onClick={() => onSelect(sensor.id)}
-            className={`w-full text-left px-3 py-2.5 rounded-xl transition-all duration-200 cursor-pointer group ${
+            className={`group w-full cursor-pointer rounded-lg border px-2 py-1.5 text-left transition-all duration-200 ${
               selectedId === sensor.id
-                ? 'bg-gradient-to-r from-accent/10 to-transparent ring-1 ring-accent/25 shadow-[0_0_12px_rgba(163,230,53,0.04)]'
-                : 'hover:bg-white/[0.03] hover:ring-1 hover:ring-graphite-700/50'
+                ? 'border-accent/30 bg-gradient-to-r from-accent/12 to-white/[0.03] shadow-[0_0_16px_rgba(163,230,53,0.05)]'
+                : 'border-white/5 bg-white/[0.025] hover:border-white/10 hover:bg-white/[0.045]'
             }`}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2.5">
               <div className="relative shrink-0">
                 <div
-                  className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200 ${
+                  className={`flex h-7 w-7 items-center justify-center rounded-md transition-all duration-200 ${
                     selectedId === sensor.id
                       ? 'bg-accent/15 text-accent shadow-sm'
-                      : 'bg-graphite-800 text-graphite-400 group-hover:bg-graphite-750'
+                      : 'bg-black/25 text-graphite-400 group-hover:bg-white/[0.06]'
                   }`}
                 >
-                  <IconSensor className={`w-4 h-4 ${selectedId === sensor.id ? 'text-accent' : ''}`} />
+                  <IconSensor className={`w-3.5 h-3.5 ${selectedId === sensor.id ? 'text-accent' : ''}`} />
                 </div>
-                <span className={`absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border-2 border-graphite-900 ${st.dot}`} />
+                <span className={`absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full border-2 border-graphite-900 ${st.dot}`} />
               </div>
 
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1">
                   <span
-                    className={`text-xs font-semibold truncate ${
+                    className={`truncate text-[10.5px] font-semibold ${
                       selectedId === sensor.id ? 'text-accent' : 'text-white/80 group-hover:text-white'
                     }`}
                   >
                     {sensor.name}
                   </span>
                   {sensor.status !== 'online' && (
-                    <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-graphite-800 text-graphite-400 font-semibold uppercase tracking-wider">
+                    <span className="rounded-full bg-graphite-800 px-1 py-0.5 text-[7.5px] font-semibold uppercase tracking-wide text-graphite-400">
                       {sensor.status}
                     </span>
                   )}
                 </div>
 
-                <div className="flex items-center gap-2 mt-0.5">
-                  <span className="text-[9px] text-graphite-500 font-mono">{sensor.id}</span>
-                  <span className="text-[8px] text-graphite-700">|</span>
-                  <span className="text-[10px] text-graphite-400 font-medium">
+                <div className="mt-0.5 flex items-center gap-1">
+                  <span className="text-[8.5px] text-graphite-500 font-mono">{sensor.id}</span>
+                  <span className="text-[7.5px] text-graphite-700">|</span>
+                  <span className="text-[8.5px] text-graphite-400 font-medium">
                     {formatFixed(sensor.metrics.temperature, 1)}&deg;C
                   </span>
-                  <span className="text-[8px] text-graphite-700">/</span>
-                  <span className="text-[10px] text-graphite-400 font-medium">
+                  <span className="text-[7.5px] text-graphite-700">/</span>
+                  <span className="text-[8.5px] text-graphite-400 font-medium">
                     {formatFixed(sensor.metrics.humidity, 0)}%
                   </span>
                 </div>

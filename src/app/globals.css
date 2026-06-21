@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-graphite-50: #f5f5f5;
-  --color-graphite-100: #e0e0e0;
-  --color-graphite-200: #c8c8c8;
-  --color-graphite-300: #a8a8a8;
-  --color-graphite-400: #7a7a7a;
-  --color-graphite-500: #5e5e5e;
-  --color-graphite-600: #484848;
-  --color-graphite-700: #2e2e2e;
-  --color-graphite-750: #242424;
-  --color-graphite-800: #1e1e1e;
-  --color-graphite-850: #181818;
-  --color-graphite-900: #141414;
-  --color-graphite-950: #0d0d0d;
-  --color-accent: #a3e635;
-  --color-accent-hover: #84cc16;
-  --color-accent-glow: rgba(163, 230, 53, 0.15);
+  --color-graphite-50: #f2f2f2;
+  --color-graphite-100: #e5e5e5;
+  --color-graphite-200: #cccccc;
+  --color-graphite-300: #aaaaaa;
+  --color-graphite-400: #888888;
+  --color-graphite-500: #666666;
+  --color-graphite-600: #4c4c4c;
+  --color-graphite-700: #363636;
+  --color-graphite-750: #2f2f2f;
+  --color-graphite-800: #2a2a2a;
+  --color-graphite-850: #242424;
+  --color-graphite-900: #1f1f1f;
+  --color-graphite-950: #181818;
+  --color-accent: #ffffff;
+  --color-accent-hover: #e5e5e5;
+  --color-accent-glow: rgba(255, 255, 255, 0.12);
   --color-success: #22c55e;
   --color-warning: #f59e0b;
   --color-danger: #ef4444;
-  --color-info: #3b82f6;
+  --color-info: #ffffff;
 }
 
 @keyframes shimmer {
@@ -59,8 +59,8 @@
 }
 
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 4px rgba(163, 230, 53, 0.1); }
-  50% { box-shadow: 0 0 12px rgba(163, 230, 53, 0.2); }
+  0%, 100% { box-shadow: 0 0 4px rgba(255, 255, 255, 0.08); }
+  50% { box-shadow: 0 0 12px rgba(255, 255, 255, 0.16); }
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -68,16 +68,12 @@
 html, body { height: 100%; width: 100%; }
 
 body {
-  font-family: 'Inter', 'SF Pro Display', system-ui, -apple-system, sans-serif;
-  background:
-    radial-gradient(circle at top left, rgba(163, 230, 53, 0.08), transparent 30%),
-    radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 24%),
-    linear-gradient(180deg, #0d0d0d 0%, #141414 46%, #0d0d0d 100%);
-  background-color: var(--color-graphite-900);
-  color: #e4e4e4;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: #1e1e1e;
+  color: #dcdcdc;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   color-scheme: dark;
 }
 
@@ -88,16 +84,16 @@ body {
 }
 
 .leaflet-control-zoom a {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  color: #1e1e1e !important;
-  border-color: rgba(200, 200, 200, 0.8) !important;
+  background-color: rgba(13, 15, 13, 0.92) !important;
+  color: #d6d6d6 !important;
+  border-color: rgba(255, 255, 255, 0.10) !important;
   backdrop-filter: blur(8px) !important;
   font-weight: bold !important;
 }
 
 .leaflet-control-zoom a:hover {
-  background-color: #ffffff !important;
-  color: var(--color-accent-hover) !important;
+  background-color: rgba(163, 230, 53, 0.14) !important;
+  color: var(--color-accent) !important;
 }
 
 .leaflet-control-attribution {
@@ -123,14 +119,14 @@ body {
 }
 
 .leaflet-control-zoom {
-  border: 1px solid rgba(200, 200, 200, 0.6) !important;
-  border-radius: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 8px !important;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
 }
 
 .leaflet-control-zoom a:first-child {
-  border-bottom: 1px solid rgba(200, 200, 200, 0.6) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
 }
 
 .leaflet-control-zoom a {

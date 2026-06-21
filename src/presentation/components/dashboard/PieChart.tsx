@@ -55,7 +55,7 @@ export function PieChart({ data, size = 120 }: PieChartProps) {
             </path>
           )
         })}
-        <circle cx={cx} cy={cy} r={innerR} fill="#141414" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+        <circle cx={cx} cy={cy} r={innerR} fill="#2a2a2a" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
         <text x={cx} y={cy} textAnchor="middle" dominantBaseline="central" fill="#e4e4e4" fontSize={size * 0.1} fontWeight="bold">
           {total}
         </text>
