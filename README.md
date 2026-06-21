@@ -1,6 +1,6 @@
 # GeoPortal Geo-spatial IoT
 
-🌐 **Live demo:** [geolot.netlify.app](https://geolot.netlify.app)
+🌐 **Live demo:** [genuine-beijinho-9e922d.netlify.app](https://genuine-beijinho-9e922d.netlify.app)
 
 ## Descripción del proyecto
 
@@ -211,3 +211,10 @@ Este proyecto demuestra conocimientos de:
 -   DevOps
 
 * CI pipeline ready
+
+
+## Últimos cambios
+
+- Actualizado el enlace en la demo en vivo a https://genuine-beijinho-9e922d.netlify.app
+- Documentado el proceso de despliegue a Netlify y se añadió la sección de CI/CD.
+- Solucionado error `TypeError: Cannot read properties of null (reading 'toFixed')` añadiendo verificaciones de nulidad en los componentes de métricas.
