@@ -209,5 +209,5 @@ Este proyecto demuestra conocimientos de:
 -   APIs
 -   Cloud
 -   DevOps
-CI validated on 2026-06-21
+
 * CI pipeline ready
