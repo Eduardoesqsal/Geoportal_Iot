@@ -1,8 +1,44 @@
+# Dependencies
 node_modules/
+.pnpm-store/
+
+# Next.js
 .next/
+out/
 dist/
+build/
+
+# Generated files
+*.tsbuildinfo
+tsconfig.app.tsbuildinfo
+tsconfig.node.tsbuildinfo
+netlify_chunk_*.js
+
+# Environment variables
 .env
 .env.local
+.env.*.local
+
+# Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dev.err
+
+# OS
 .DS_Store
-nul
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+coverage/
+.nyc_output/
+
+# Build
+dist/
+build/
