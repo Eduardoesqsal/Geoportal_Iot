@@ -14,21 +14,26 @@ export function RightPanel({ children, mobileOpen = false, onClose }: RightPanel
 
   const panelContent = (
     <>
-      <div className="h-9 px-3 border-b border-graphite-700/30 flex items-center justify-between shrink-0">
-        {!collapsed && (
-          <div className="flex items-center gap-2 min-w-0">
-            <div className="w-5 h-5 rounded-md bg-accent/10 flex items-center justify-center">
-              <IconActivity className="w-3 h-3 text-accent" />
+      <div className="flex h-10 items-center justify-between border-b border-white/6 px-3">
+        {!collapsed ? (
+          <div className="flex min-w-0 items-center gap-2">
+            <div className="flex h-5 w-5 items-center justify-center rounded-md bg-accent/10 ring-1 ring-accent/15">
+              <IconActivity className="h-3 w-3 text-accent" />
             </div>
-            <h2 className="text-[9px] font-bold text-graphite-400 tracking-[0.15em] uppercase truncate">Dashboard</h2>
+            <div>
+              <h2 className="text-[9px] font-semibold uppercase tracking-[0.18em] text-graphite-400">Dashboard</h2>
+              <p className="text-[9px] text-graphite-600">Status and analytics</p>
+            </div>
           </div>
+        ) : (
+          <div className="h-5 w-5" />
         )}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="text-graphite-500 hover:text-white hover:bg-white/10 transition-all duration-200 cursor-pointer shrink-0 w-5 h-5 flex items-center justify-center rounded ml-auto"
+          className="ml-auto flex h-6 w-6 items-center justify-center rounded-lg border border-white/6 bg-white/4 text-graphite-400 transition-all hover:border-accent/20 hover:bg-accent/10 hover:text-white"
           title={collapsed ? 'Expand panel' : 'Collapse panel'}
         >
-          {collapsed ? <IconChevronLeft className="w-3 h-3" /> : <IconChevronRight className="w-3 h-3" />}
+          {collapsed ? <IconChevronLeft className="h-3 w-3" /> : <IconChevronRight className="h-3 w-3" />}
         </button>
       </div>
       {!collapsed && <div className="flex-1 overflow-y-auto p-3">{children}</div>}
@@ -38,9 +43,9 @@ export function RightPanel({ children, mobileOpen = false, onClose }: RightPanel
   return (
     <>
       <aside
-        className={`shrink-0 bg-gradient-to-b from-graphite-900 to-graphite-950 border-l border-graphite-700/40 flex flex-col h-full transition-all duration-300 ${
+        className={`hidden h-full shrink-0 flex-col border-l border-white/6 bg-[linear-gradient(180deg,rgba(20,20,20,0.94),rgba(13,13,13,0.96))] shadow-[inset_1px_0_0_rgba(255,255,255,0.02)] transition-all duration-300 md:flex ${
           collapsed ? 'w-10' : 'w-72 lg:w-80'
-        } hidden md:flex`}
+        }`}
       >
         {panelContent}
       </aside>
@@ -48,20 +53,24 @@ export function RightPanel({ children, mobileOpen = false, onClose }: RightPanel
       {mobileOpen && (
         <div className="fixed inset-0 z-[1100] md:hidden">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-          <aside className="absolute right-0 w-80 max-w-[85vw] h-full bg-gradient-to-b from-graphite-900 to-graphite-950 border-l border-graphite-700/40 flex flex-col shadow-2xl animate-[slide-in-right_0.2s_ease-out]">
-            <div className="flex items-center justify-between h-9 px-3 border-b border-graphite-700/30 shrink-0">
+          <aside className="absolute right-0 flex h-full w-80 max-w-[85vw] flex-col border-l border-white/6 bg-[linear-gradient(180deg,rgba(20,20,20,0.98),rgba(13,13,13,0.98))] shadow-2xl">
+            <div className="flex h-10 items-center justify-between border-b border-white/6 px-3">
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded-md bg-accent/10 flex items-center justify-center">
-                  <IconActivity className="w-3 h-3 text-accent" />
+                <div className="flex h-5 w-5 items-center justify-center rounded-md bg-accent/10 ring-1 ring-accent/15">
+                  <IconActivity className="h-3 w-3 text-accent" />
                 </div>
-                <h2 className="text-[9px] font-bold text-graphite-400 tracking-[0.15em] uppercase">Dashboard</h2>
+                <div>
+                  <h2 className="text-[9px] font-semibold uppercase tracking-[0.18em] text-graphite-400">Dashboard</h2>
+                  <p className="text-[9px] text-graphite-600">Status and analytics</p>
+                </div>
               </div>
               <button
                 onClick={onClose}
-                className="text-graphite-500 hover:text-white hover:bg-white/10 transition-all cursor-pointer w-6 h-6 flex items-center justify-center rounded"
+                className="flex h-6 w-6 items-center justify-center rounded-lg border border-white/6 bg-white/4 text-graphite-400 transition-all hover:border-accent/20 hover:bg-accent/10 hover:text-white"
               >
-                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </button>
             </div>

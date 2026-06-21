@@ -6,6 +6,7 @@ import type { Sensor } from '@/domain/entities/Sensor'
 import type { GeoJsonObject } from 'geojson'
 import type { EarthquakeFeature } from '@/infrastructure/api/earthquakeService'
 import type { BaseMapType } from '@/presentation/components/map/BaseMapSwitcher'
+import { formatFixed, toFiniteNumber } from '@/presentation/utils/number'
 import 'leaflet/dist/leaflet.css'
 
 interface SensorMapProps {
@@ -46,6 +47,7 @@ function createMarkerIcon(color: string, selected: boolean) {
   const outerSize = selected ? 24 : 18
   const innerSize = selected ? 12 : 8
   const glowColor = selected ? '#a3e635' : color
+
   return new L.DivIcon({
     className: 'custom-marker',
     html: `<div style="
@@ -76,6 +78,7 @@ const iconSelected = new L.DivIcon({
 
 function getIcon(sensor: Sensor, isSelected: boolean) {
   if (isSelected) return iconSelected
+
   switch (sensor.status) {
     case 'online':
       return createMarkerIcon('#22c55e', false)
@@ -85,13 +88,17 @@ function getIcon(sensor: Sensor, isSelected: boolean) {
       return createMarkerIcon('#f59e0b', false)
     case 'error':
       return createMarkerIcon('#ef4444', false)
+    default:
+      return createMarkerIcon('#5e5e5e', false)
   }
 }
 
 function getBounds(sensors: Sensor[]) {
   if (sensors.length === 0) return undefined
-  const lats = sensors.map((s) => s.location.lat)
-  const lngs = sensors.map((s) => s.location.lng)
+
+  const lats = sensors.map((s) => toFiniteNumber(s.location.lat))
+  const lngs = sensors.map((s) => toFiniteNumber(s.location.lng))
+
   return L.latLngBounds(
     [Math.min(...lats) - 0.5, Math.min(...lngs) - 0.5],
     [Math.max(...lats) + 0.5, Math.max(...lngs) + 0.5],
@@ -100,16 +107,22 @@ function getBounds(sensors: Sensor[]) {
 
 const eqColors = ['#fee08b', '#fdae61', '#f46d43', '#d73027', '#a50026']
 
-function getMagColor(mag: number): string {
-  if (mag < 4) return eqColors[0]
-  if (mag < 5) return eqColors[1]
-  if (mag < 6) return eqColors[2]
-  if (mag < 7) return eqColors[3]
+function getMagValue(mag: unknown): number {
+  return toFiniteNumber(mag, 0)
+}
+
+function getMagColor(mag: unknown): string {
+  const value = getMagValue(mag)
+  if (value < 4) return eqColors[0]
+  if (value < 5) return eqColors[1]
+  if (value < 6) return eqColors[2]
+  if (value < 7) return eqColors[3]
   return eqColors[4]
 }
 
-function getMagRadius(mag: number): number {
-  return Math.max(4, Math.min(18, mag * 3))
+function getMagRadius(mag: unknown): number {
+  const value = getMagValue(mag)
+  return Math.max(4, Math.min(18, value * 3))
 }
 
 export function SensorMap({
@@ -140,6 +153,7 @@ export function SensorMap({
     >
       <TileLayer url={base.url} attribution={base.attribution} />
       {label && <TileLayer url={label.url} attribution={label.attribution} />}
+
       {sensors.map((sensor) => (
         <Marker
           key={sensor.id}
@@ -152,21 +166,41 @@ export function SensorMap({
           <Popup>
             <div className="text-xs" style={{ minWidth: 120 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-                <div style={{ width: 8, height: 8, borderRadius: '50%', background: sensor.status === 'online' ? '#22c55e' : sensor.status === 'warning' ? '#f59e0b' : sensor.status === 'error' ? '#ef4444' : '#5e5e5e' }} />
-                <strong className="text-white" style={{ fontSize: 12 }}>{sensor.name}</strong>
+                <div
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: '50%',
+                    background:
+                      sensor.status === 'online'
+                        ? '#22c55e'
+                        : sensor.status === 'warning'
+                          ? '#f59e0b'
+                          : sensor.status === 'error'
+                            ? '#ef4444'
+                            : '#5e5e5e',
+                  }}
+                />
+                <strong className="text-white" style={{ fontSize: 12 }}>
+                  {sensor.name}
+                </strong>
               </div>
               <div style={{ color: '#5e5e5e', fontSize: 10, fontFamily: 'monospace', marginBottom: 4 }}>{sensor.id}</div>
               <div style={{ color: '#a8a8a8', fontSize: 11 }}>
-                {sensor.metrics.temperature?.toFixed(1)}°C · {sensor.metrics.humidity?.toFixed(0)}%
+                {formatFixed(sensor.metrics.temperature, 1)}&deg;C · {formatFixed(sensor.metrics.humidity, 0)}%
               </div>
             </div>
           </Popup>
         </Marker>
       ))}
+
       {showEarthquakes &&
         earthquakes?.map((eq) => {
-          const [lng, lat] = eq.geometry.coordinates
-          const mag = eq.properties.mag
+          const coordinates = eq.geometry.coordinates
+          const lng = toFiniteNumber(coordinates[0], 0)
+          const lat = toFiniteNumber(coordinates[1], 0)
+          const mag = getMagValue(eq.properties.mag)
+
           return (
             <CircleMarker
               key={eq.id}
@@ -183,7 +217,9 @@ export function SensorMap({
                 <div className="text-xs" style={{ minWidth: 140 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
                     <div style={{ width: 8, height: 8, borderRadius: '50%', background: getMagColor(mag) }} />
-                    <strong className="text-white" style={{ fontSize: 11 }}>M {mag.toFixed(1)} Earthquake</strong>
+                    <strong className="text-white" style={{ fontSize: 11 }}>
+                      M {formatFixed(mag, 1)} Earthquake
+                    </strong>
                   </div>
                   <div style={{ color: '#a8a8a8', fontSize: 10, marginBottom: 2 }}>{eq.properties.title}</div>
                   <div style={{ color: '#5e5e5e', fontSize: 9 }}>{new Date(eq.properties.time).toLocaleString()}</div>
@@ -192,6 +228,7 @@ export function SensorMap({
             </CircleMarker>
           )
         })}
+
       {geoJsonData && (
         <GeoJSON
           key={JSON.stringify(geoJsonData)}

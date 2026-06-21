@@ -1,4 +1,5 @@
 import type { Sensor } from '@/domain/entities/Sensor';
+import { toFiniteNumber } from '@/infrastructure/utils/number';
 
 interface ApiSensor {
   id: string;
@@ -15,12 +16,12 @@ export function adaptSensor(apiSensor: ApiSensor): Sensor {
     name: apiSensor.name,
     status: mapStatus(apiSensor.status),
     location: {
-      lat: apiSensor.location.lat,
-      lng: apiSensor.location.lng,
+      lat: toFiniteNumber(apiSensor.location.lat),
+      lng: toFiniteNumber(apiSensor.location.lng),
     },
     metrics: {
-      temperature: Number(apiSensor.metrics.temperature) ?? 0,
-      humidity: Number(apiSensor.metrics.humidity) ?? 0,
+      temperature: toFiniteNumber(apiSensor.metrics.temperature),
+      humidity: toFiniteNumber(apiSensor.metrics.humidity),
     },
     lastUpdated: apiSensor.lastUpdated,
   };

@@ -4,6 +4,7 @@ import type { AirQualityMeasurement } from '@/infrastructure/api/airQualityServi
 import { LoadingSpinner } from '@/presentation/components/common/LoadingSpinner'
 import { EmptyState } from '@/presentation/components/common/EmptyState'
 import { IconSensor, IconDroplet, IconWind, IconMap } from '@/presentation/components/ui/Icons'
+import { formatFixed } from '@/presentation/utils/number'
 
 interface SensorDetailProps {
   sensor: Sensor | undefined
@@ -23,11 +24,12 @@ function paramLabel(param: string): string {
   const labels: Record<string, string> = {
     pm25: 'PM2.5',
     pm10: 'PM10',
-    o3: 'O₃',
-    no2: 'NO₂',
-    so2: 'SO₂',
+    o3: 'O3',
+    no2: 'NO2',
+    so2: 'SO2',
     co: 'CO',
   }
+
   return labels[param] ?? param.toUpperCase()
 }
 
@@ -63,10 +65,10 @@ export function SensorDetail({ sensor, isLoading, weather, airQuality }: SensorD
         </div>
         <div className="flex items-center gap-2 text-xs">
           <div className="bg-graphite-800/80 rounded-lg px-3 py-2 font-mono text-graphite-300 flex-1 border border-graphite-700/30">
-            {sensor.location.lat.toFixed(4)}°N
+            {formatFixed(sensor.location.lat, 4)}&deg; N
           </div>
           <div className="bg-graphite-800/80 rounded-lg px-3 py-2 font-mono text-graphite-300 flex-1 border border-graphite-700/30">
-            {sensor.location.lng.toFixed(4)}°E
+            {formatFixed(sensor.location.lng, 4)}&deg; E
           </div>
         </div>
       </div>
@@ -76,11 +78,11 @@ export function SensorDetail({ sensor, isLoading, weather, airQuality }: SensorD
         <div className="grid grid-cols-2 gap-2">
           <div className="bg-graphite-800/60 rounded-lg p-3 border border-graphite-700/30">
             <p className="text-[9px] text-graphite-500 font-medium">Temperature</p>
-            <p className="text-lg font-bold text-white mt-0.5">{sensor.metrics.temperature?.toFixed(1)}°C</p>
+            <p className="text-lg font-bold text-white mt-0.5">{formatFixed(sensor.metrics.temperature, 1)}&deg;C</p>
           </div>
           <div className="bg-graphite-800/60 rounded-lg p-3 border border-graphite-700/30">
             <p className="text-[9px] text-graphite-500 font-medium">Humidity</p>
-            <p className="text-lg font-bold text-white mt-0.5">{sensor.metrics.humidity?.toFixed(0)}%</p>
+            <p className="text-lg font-bold text-white mt-0.5">{formatFixed(sensor.metrics.humidity, 0)}%</p>
           </div>
         </div>
       </div>
@@ -103,19 +105,19 @@ export function SensorDetail({ sensor, isLoading, weather, airQuality }: SensorD
           <div className="grid grid-cols-2 gap-2">
             <div className="bg-graphite-800/60 rounded-lg p-2.5 border border-graphite-700/30">
               <p className="text-[9px] text-graphite-500">Temp</p>
-              <p className="text-sm font-bold text-white mt-0.5">{weather.temperature_2m?.toFixed(1)}°C</p>
+              <p className="text-sm font-bold text-white mt-0.5">{formatFixed(weather.temperature_2m, 1)}&deg;C</p>
             </div>
             <div className="bg-graphite-800/60 rounded-lg p-2.5 border border-graphite-700/30">
               <p className="text-[9px] text-graphite-500">Humidity</p>
-              <p className="text-sm font-bold text-white mt-0.5">{weather.relative_humidity_2m?.toFixed(0)}%</p>
+              <p className="text-sm font-bold text-white mt-0.5">{formatFixed(weather.relative_humidity_2m, 0)}%</p>
             </div>
             <div className="bg-graphite-800/60 rounded-lg p-2.5 border border-graphite-700/30">
               <p className="text-[9px] text-graphite-500">Wind</p>
-              <p className="text-sm font-bold text-white mt-0.5">{weather.wind_speed_10m?.toFixed(1)} km/h</p>
+              <p className="text-sm font-bold text-white mt-0.5">{formatFixed(weather.wind_speed_10m, 1)} km/h</p>
             </div>
             <div className="bg-graphite-800/60 rounded-lg p-2.5 border border-graphite-700/30">
               <p className="text-[9px] text-graphite-500">Pressure</p>
-              <p className="text-sm font-bold text-white mt-0.5">{weather.surface_pressure?.toFixed(0)} hPa</p>
+              <p className="text-sm font-bold text-white mt-0.5">{formatFixed(weather.surface_pressure, 0)} hPa</p>
             </div>
           </div>
         </div>
@@ -134,7 +136,9 @@ export function SensorDetail({ sensor, isLoading, weather, airQuality }: SensorD
               <div key={i} className="bg-graphite-800/60 rounded-lg p-2.5 border border-graphite-700/30">
                 <div className="flex justify-between items-center">
                   <p className="text-xs font-semibold text-graphite-300">{paramLabel(m.parameter)}</p>
-                  <p className="text-xs font-bold text-white">{m.value} <span className="text-graphite-500 font-normal">{m.unit}</span></p>
+                  <p className="text-xs font-bold text-white">
+                    {m.value} <span className="text-graphite-500 font-normal">{m.unit}</span>
+                  </p>
                 </div>
                 <p className="text-[9px] text-graphite-600 mt-0.5">{m.location}</p>
               </div>

@@ -4,6 +4,7 @@ import type { AirQualityMeasurement } from '@/infrastructure/api/airQualityServi
 import type { EarthquakeFeature } from '@/infrastructure/api/earthquakeService'
 import { PieChart } from '@/presentation/components/dashboard/PieChart'
 import { IconEarthquake, IconSensor } from '@/presentation/components/ui/Icons'
+import { formatFixed } from '@/presentation/utils/number'
 
 interface SensorDashboardProps {
   allSensors: Sensor[]
@@ -25,12 +26,17 @@ function paramLabel(param: string): string {
   const labels: Record<string, string> = {
     pm25: 'PM2.5',
     pm10: 'PM10',
-    o3: 'O₃',
-    no2: 'NO₂',
-    so2: 'SO₂',
+    o3: 'O3',
+    no2: 'NO2',
+    so2: 'SO2',
     co: 'CO',
   }
+
   return labels[param] ?? param.toUpperCase()
+}
+
+function safeMagnitude(value: unknown): string {
+  return formatFixed(value, 1, '--')
 }
 
 export function SensorDashboard({
@@ -77,7 +83,9 @@ export function SensorDashboard({
       </div>
 
       <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-3.5 border border-graphite-700/40 shadow-sm">
-        <p className="text-[9px] text-graphite-500 uppercase tracking-wider mb-3 text-center font-bold">Station Distribution</p>
+        <p className="text-[9px] text-graphite-500 uppercase tracking-wider mb-3 text-center font-bold">
+          Station Distribution
+        </p>
         <PieChart data={pieData} size={110} />
       </div>
 
@@ -144,13 +152,13 @@ export function SensorDashboard({
                 <div className="bg-graphite-800/60 rounded-lg p-2.5 border border-graphite-700/30">
                   <p className="text-[9px] text-graphite-500">Temp</p>
                   <p className="text-sm font-bold text-white mt-0.5">
-                    {selectedSensor.metrics.temperature?.toFixed(1)}°C
+                    {formatFixed(selectedSensor.metrics.temperature, 1)}&deg;C
                   </p>
                 </div>
                 <div className="bg-graphite-800/60 rounded-lg p-2.5 border border-graphite-700/30">
                   <p className="text-[9px] text-graphite-500">Humidity</p>
                   <p className="text-sm font-bold text-white mt-0.5">
-                    {selectedSensor.metrics.humidity?.toFixed(0)}%
+                    {formatFixed(selectedSensor.metrics.humidity, 0)}%
                   </p>
                 </div>
               </div>
@@ -164,25 +172,25 @@ export function SensorDashboard({
                 <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-lg p-2.5 border border-graphite-700/40 shadow-sm">
                   <p className="text-[9px] text-graphite-500">Temp</p>
                   <p className="text-sm font-bold text-white mt-0.5">
-                    {weather.temperature_2m?.toFixed(1)}°C
+                    {formatFixed(weather.temperature_2m, 1)}&deg;C
                   </p>
                 </div>
                 <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-lg p-2.5 border border-graphite-700/40 shadow-sm">
                   <p className="text-[9px] text-graphite-500">Humidity</p>
                   <p className="text-sm font-bold text-white mt-0.5">
-                    {weather.relative_humidity_2m?.toFixed(0)}%
+                    {formatFixed(weather.relative_humidity_2m, 0)}%
                   </p>
                 </div>
                 <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-lg p-2.5 border border-graphite-700/40 shadow-sm">
                   <p className="text-[9px] text-graphite-500">Wind</p>
                   <p className="text-sm font-bold text-white mt-0.5">
-                    {weather.wind_speed_10m?.toFixed(1)} km/h
+                    {formatFixed(weather.wind_speed_10m, 1)} km/h
                   </p>
                 </div>
                 <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-lg p-2.5 border border-graphite-700/40 shadow-sm">
                   <p className="text-[9px] text-graphite-500">Pressure</p>
                   <p className="text-sm font-bold text-white mt-0.5">
-                    {weather.surface_pressure?.toFixed(0)} hPa
+                    {formatFixed(weather.surface_pressure, 0)} hPa
                   </p>
                 </div>
               </div>
@@ -219,7 +227,7 @@ export function SensorDashboard({
                   <div className="flex justify-between items-center gap-2">
                     <p className="text-[10px] text-white/80 truncate font-medium">{eq.properties.title}</p>
                     <span className="text-[10px] font-bold text-warning shrink-0 bg-warning/10 px-1.5 py-0.5 rounded">
-                      M {eq.properties.mag.toFixed(1)}
+                      M {safeMagnitude(eq.properties.mag)}
                     </span>
                   </div>
                   <p className="text-[9px] text-graphite-600 mt-0.5">

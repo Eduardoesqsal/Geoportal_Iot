@@ -1,10 +1,17 @@
+import { formatFixed, toFiniteNumber } from '@/presentation/utils/number'
+
 interface PieChartProps {
   data: { label: string; value: number; color: string }[]
   size?: number
 }
 
 export function PieChart({ data, size = 120 }: PieChartProps) {
-  const total = data.reduce((s, d) => s + d.value, 0)
+  const normalizedData = data.map((item) => ({
+    ...item,
+    value: Math.max(0, toFiniteNumber(item.value, 0)),
+  }))
+  const total = normalizedData.reduce((s, d) => s + d.value, 0)
+
   if (total === 0) return null
 
   const cx = size / 2
@@ -17,13 +24,13 @@ export function PieChart({ data, size = 120 }: PieChartProps) {
     <div className="flex flex-col items-center gap-2.5">
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
         <defs>
-          {data.map((d, i) => (
+          {normalizedData.map((d, i) => (
             <filter key={i} id={`shadow-${i}`}>
               <feDropShadow dx="0" dy="1" stdDeviation="1.5" floodOpacity="0.3" />
             </filter>
           ))}
         </defs>
-        {data.map((d, i) => {
+        {normalizedData.map((d, i) => {
           if (d.value === 0) return null
           const pct = d.value / total
           const angle = pct * 360
@@ -36,6 +43,7 @@ export function PieChart({ data, size = 120 }: PieChartProps) {
           const x2 = cx + r * Math.cos(endRad)
           const y2 = cy + r * Math.sin(endRad)
           const large = angle > 180 ? 1 : 0
+
           return (
             <path
               key={d.label}
@@ -43,7 +51,7 @@ export function PieChart({ data, size = 120 }: PieChartProps) {
               fill={d.color}
               filter={`url(#shadow-${i})`}
             >
-              <title>{`${d.label}: ${d.value} (${(pct * 100).toFixed(1)}%)`}</title>
+              <title>{`${d.label}: ${d.value} (${formatFixed(pct * 100, 1)}%)`}</title>
             </path>
           )
         })}
@@ -56,13 +64,13 @@ export function PieChart({ data, size = 120 }: PieChartProps) {
         </text>
       </svg>
       <div className="flex flex-wrap gap-2 justify-center">
-        {data
+        {normalizedData
           .filter((d) => d.value > 0)
           .map((d) => (
             <div key={d.label} className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-graphite-800/60">
               <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: d.color }} />
               <span className="text-[9px] text-graphite-400 font-semibold">
-                {d.label} {((d.value / total) * 100).toFixed(0)}%
+                {d.label} {formatFixed((d.value / total) * 100, 0)}%
               </span>
             </div>
           ))}
