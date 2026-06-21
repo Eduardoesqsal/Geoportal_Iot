@@ -21,8 +21,10 @@ export function RightPanel({ children, mobileOpen = false, onClose }: RightPanel
               <IconActivity className="h-2.5 w-2.5 text-accent" />
             </div>
             <div>
-              <h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-300">Dashboard</h2>
-              <p className="text-[7.5px] text-graphite-500">Status and analytics</p>
+              <button className="flex flex-col items-start rounded py-2 hover:bg-white/10">
+                <h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-300">Dashboard</h2>
+                <p className="text-[7.5px] text-graphite-500">Status and analytics</p>
+              </button>
             </div>
           </div>
         ) : (

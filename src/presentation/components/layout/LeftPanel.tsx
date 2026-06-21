@@ -21,8 +21,10 @@ export function LeftPanel({ children, mobileOpen = false, onClose }: LeftPanelPr
               <IconLayers className="h-2.5 w-2.5 text-accent" />
             </div>
             <div>
-              <h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-300">Geoportal LOT</h2>
-              <p className="text-[7.5px] text-graphite-500">Filters, layers and sensors</p>
+                <button className="flex flex-col items-start h-10 justify-center px-2 hover:bg-white/10 rounded">
+                  <h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-300">Geoportal LOT</h2>
+                  <p className="text-[7.5px] text-graphite-500">Filters, layers and sensors</p>
+                </button>
             </div>
           </div>
         ) : (
@@ -36,7 +38,7 @@ export function LeftPanel({ children, mobileOpen = false, onClose }: LeftPanelPr
           {collapsed ? <IconChevronRight className="h-2.5 w-2.5" /> : <IconChevronLeft className="h-2.5 w-2.5" />}
         </button>
       </div>
-        {!collapsed && <div className="flex flex-1 flex-col gap-2 overflow-hidden p-2"><p className="text-xs font-medium mb-2">Explorer</p>{children}</div>}
+        {!collapsed && <div className="flex flex-1 flex-col gap-2 overflow-hidden p-2"><button className="h-10 flex items-center px-2 text-xs font-medium mb-2 rounded hover:bg-white/10">Explorer</button>{children}</div>}
     </>
   )
 
