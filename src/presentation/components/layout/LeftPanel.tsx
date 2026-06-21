@@ -21,7 +21,7 @@ export function LeftPanel({ children, mobileOpen = false, onClose }: LeftPanelPr
               <IconLayers className="h-2.5 w-2.5 text-accent" />
             </div>
             <div>
-              <h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-300">Explorer</h2>
+              <h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-300">Geoportal LOT</h2>
               <p className="text-[7.5px] text-graphite-500">Filters, layers and sensors</p>
             </div>
           </div>
@@ -60,7 +60,7 @@ export function LeftPanel({ children, mobileOpen = false, onClose }: LeftPanelPr
                   <IconLayers className="h-2.5 w-2.5 text-accent" />
                 </div>
                 <div>
-                  <h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-400">Explorer</h2>
+                  <h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-400">Geoportal LOT</h2>
                   <p className="text-[7.5px] text-graphite-600">Filters, layers and sensors</p>
                 </div>
               </div>
