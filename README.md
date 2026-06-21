@@ -1,5 +1,7 @@
 # GeoPortal Geo-spatial IoT
 
+🌐 **Live demo:** [geolot.netlify.app](https://geolot.netlify.app)
+
 ## Descripción del proyecto
 
 GeoPortal Geo-spatial IoT es una aplicación web frontend orientada al
