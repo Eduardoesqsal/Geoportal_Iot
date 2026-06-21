@@ -43,7 +43,7 @@ export function SensorDetail({ sensor, isLoading, weather, airQuality }: SensorD
       <div className="bg-gradient-to-br from-graphite-850 to-graphite-900 rounded-xl p-3.5 border border-graphite-700/40 shadow-sm">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/15 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(163,230,53,0.06)]">
-            <IconSensor className="w-4.5 h-4.5 text-accent" />
+            <IconSensor className="w-4 h-4 text-accent" />
           </div>
           <div className="min-w-0 flex-1">
             <h3 className="text-sm font-bold text-white/90 truncate">{sensor.name}</h3>
