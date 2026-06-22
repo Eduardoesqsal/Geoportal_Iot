@@ -125,6 +125,16 @@ Crear una aplicación de nivel entrevista frontend senior mostrando:
 React + GIS + IoT + API + arquitectura limpia + DevOps.
 
 
+## Error
+
+### Build: Module not found `@/styles/globals.css`
+
+**Problema:** En `src/pages/_app.tsx` se importaba `@/styles/globals.css`, pero el archivo real está en `src/app/globals.css`.
+
+**Solución:** Cambiar el import a `@/app/globals.css`.
+
+**Causa:** Migración incompleta de Pages Router a App Router de Next.js. El layout de App Router (`src/app/layout.tsx`) ya importa `./globals.css` correctamente, pero `_app.tsx` quedó con la ruta antigua.
+
 ## Github
 echo "# Geoportal_Iot" >> README.md
 git init

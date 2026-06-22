@@ -32,13 +32,13 @@ export function LeftPanel({ children, mobileOpen = false, onClose }: LeftPanelPr
         )}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="flex h-6 w-6 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-graphite-400 transition-all hover:border-accent/30 hover:bg-accent/10 hover:text-white"
+          className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-graphite-300 transition-all hover:border-accent/30 hover:bg-accent/10 hover:text-white md:h-7.5 md:w-7.5"
           title={collapsed ? 'Expand panel' : 'Collapse panel'}
         >
           {collapsed ? <IconChevronRight className="h-2.5 w-2.5" /> : <IconChevronLeft className="h-2.5 w-2.5" />}
         </button>
       </div>
-        {!collapsed && <div className="flex flex-1 flex-col gap-2 overflow-hidden p-2"><button className="h-10 flex items-center px-2 text-xs font-medium mb-2 rounded hover:bg-white/10">Explorer</button>{children}</div>}
+        {!collapsed && <div className="flex flex-1 flex-col gap-2 overflow-hidden p-2"><button className="h-12 flex items-center px-3 text-sm font-medium mb-2 rounded-md hover:bg-white/10 md:h-10 md:px-2 md:text-xs">Explorer</button>{children}</div>}
     </>
   )
 
