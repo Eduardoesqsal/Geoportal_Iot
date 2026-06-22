@@ -20,11 +20,9 @@ export function LeftPanel({ children, mobileOpen = false, onClose }: LeftPanelPr
             <div className="flex h-4.5 w-4.5 items-center justify-center rounded bg-accent/10 ring-1 ring-accent/20">
               <IconLayers className="h-2.5 w-2.5 text-accent" />
             </div>
-            <div>
-                <button className="flex flex-col items-start h-10 justify-center px-2 hover:bg-white/10 rounded">
-                  <h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-300">Geoportal LOT</h2>
-                  <p className="text-[7.5px] text-graphite-500">Filters, layers and sensors</p>
-                </button>
+            <div className="flex min-w-0 flex-col px-2">
+              <h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-300">Geoportal LOT</h2>
+              <p className="text-[7.5px] text-graphite-500">Filters, layers and sensors</p>
             </div>
           </div>
         ) : (
@@ -38,7 +36,7 @@ export function LeftPanel({ children, mobileOpen = false, onClose }: LeftPanelPr
           {collapsed ? <IconChevronRight className="h-2.5 w-2.5" /> : <IconChevronLeft className="h-2.5 w-2.5" />}
         </button>
       </div>
-        {!collapsed && <div className="flex flex-1 flex-col gap-2 overflow-hidden p-2"><button className="h-12 flex items-center px-3 text-sm font-medium mb-2 rounded-md hover:bg-white/10 md:h-10 md:px-2 md:text-xs">Explorer</button>{children}</div>}
+        {!collapsed && <div className="flex flex-1 flex-col gap-2 overflow-hidden p-2"><h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-300 px-2">Explorer</h2>{children}</div>}
     </>
   )
 
@@ -76,12 +74,10 @@ export function LeftPanel({ children, mobileOpen = false, onClose }: LeftPanelPr
                 </svg>
               </button>
             </div>
-          {!collapsed && (
-        <div className="flex flex-1 flex-col gap-2 overflow-hidden p-2">
-          <h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-300">Explorer</h2>
-          {children}
-        </div>
-      )}
+            <div className="flex flex-1 flex-col gap-2 overflow-hidden p-2">
+              <h2 className="text-[8px] font-semibold uppercase tracking-[0.15em] text-graphite-300">Explorer</h2>
+              {children}
+            </div>
           </aside>
         </div>
       )}
