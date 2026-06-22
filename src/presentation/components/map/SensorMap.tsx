@@ -6,7 +6,7 @@ import type { Sensor } from '@/domain/entities/Sensor'
 import type { GeoJsonObject } from 'geojson'
 import type { EarthquakeFeature } from '@/infrastructure/api/earthquakeService'
 import type { BaseMapType } from '@/presentation/components/map/BaseMapSwitcher'
-import { formatFixed, toFiniteNumber } from '@/presentation/utils/number'
+import { formatFixed, toFiniteNumber } from '@/infrastructure/utils/number'
 import 'leaflet/dist/leaflet.css'
 
 interface SensorMapProps {

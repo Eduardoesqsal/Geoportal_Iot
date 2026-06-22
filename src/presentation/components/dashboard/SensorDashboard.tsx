@@ -4,7 +4,7 @@ import type { AirQualityMeasurement } from '@/infrastructure/api/airQualityServi
 import type { EarthquakeFeature } from '@/infrastructure/api/earthquakeService'
 import { PieChart } from '@/presentation/components/dashboard/PieChart'
 import { IconEarthquake, IconSensor } from '@/presentation/components/ui/Icons'
-import { formatFixed } from '@/presentation/utils/number'
+import { formatFixed } from '@/infrastructure/utils/number'
 
 interface SensorDashboardProps {
   allSensors: Sensor[]

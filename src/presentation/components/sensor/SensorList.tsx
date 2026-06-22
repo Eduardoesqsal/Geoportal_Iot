@@ -2,7 +2,7 @@ import type { Sensor } from '@/domain/entities/Sensor'
 import { EmptyState } from '@/presentation/components/common/EmptyState'
 import { LoadingSpinner } from '@/presentation/components/common/LoadingSpinner'
 import { IconSensor } from '@/presentation/components/ui/Icons'
-import { formatFixed } from '@/presentation/utils/number'
+import { formatFixed } from '@/infrastructure/utils/number'
 
 interface SensorListProps {
   sensors: Sensor[]

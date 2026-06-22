@@ -1,4 +1,4 @@
-import { formatFixed, toFiniteNumber } from '@/presentation/utils/number'
+import { formatFixed, toFiniteNumber } from '@/infrastructure/utils/number'
 
 interface PieChartProps {
   data: { label: string; value: number; color: string }[]
