@@ -24,6 +24,7 @@
     "shpjs": "^6.2.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
     "@swc/jest": "^0.2.39",
     "@tailwindcss/postcss": "^4.1.6",
     "@testing-library/jest-dom": "^6.9.1",
@@ -35,6 +36,8 @@
     "@types/node": "^26.0.0",
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^15.5.19",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
