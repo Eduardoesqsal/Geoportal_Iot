@@ -15,7 +15,7 @@ export function Header({ title = 'GeoPortal IoT', onToggleLeft, onToggleRight, l
       <div className="flex h-full items-center gap-2.5">
         <button
           onClick={onToggleLeft}
-          className="flex h-7.5 w-7.5 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-graphite-300 transition-all hover:border-accent/30 hover:bg-accent/10 hover:text-white md:hidden"
+          className="flex h-12 w-12 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-graphite-300 transition-all hover:border-accent/30 hover:bg-accent/10 hover:text-white md:hidden"
           title={leftOpen ? 'Close explorer' : 'Open explorer'}
         >
           <IconLayers className="h-3 w-3" />
@@ -59,7 +59,7 @@ export function Header({ title = 'GeoPortal IoT', onToggleLeft, onToggleRight, l
           </div>
           <button
             onClick={onToggleRight}
-            className="flex h-7.5 w-7.5 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-graphite-300 transition-all hover:border-accent/30 hover:bg-accent/10 hover:text-white md:hidden"
+            className="flex h-14 w-14 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-graphite-300 transition-all hover:border-accent/30 hover:bg-accent/10 hover:text-white md:hidden md:h-7.5 md:w-7.5"
             title={rightOpen ? 'Close dashboard' : 'Open dashboard'}
           >
             <IconActivity className="h-3 w-3" />
